@@ -1,14 +1,32 @@
-let name = document.getElementById("name")
-let type = document.getElementById("type")
-let outputName = document.getElementById("outputName")
-let outputType = document.getElementById("outputType")
-let id = 0;
+let allTypes = document.getElementById('allTypes');
+let nameOutput = document.getElementById('pokemonOutput');
+let matchedTypes = [];
 
+let pokemon = [
+  {name: 'pikachu', type: 'electric'},
+  {name: 'charmander', type: 'fire'},
+  {name: 'squirtle', type: 'water'},
+  {name: 'bulbasaur', type: 'grass'},
+  {name: 'manectrike', type: 'electric'},
+];
 
-function submit() {
-  id += 1;
-  outputName.innerHTML +=
+function search() {
+  pokemonOutput.innerHTML = '';
+  let matchedTypes = [];
+  for(let i = 0; i < pokemon.length; i++) {
+    if(pokemon[i].type === allTypes.value){
+      matchedTypes.push(pokemon[i]);
+    } else {
+      continue;
+    }
+  }
+
+  for(let i = 0; i < matchedTypes.length; i++) {
+    console.log(matchedTypes[i]);
+    pokemonOutput.innerHTML +=
     '<ul>' +
-      '<li id="' + id + '">' + name.value + " " + type.value + '</li>'
+      '<li>' + 'Name: ' +matchedTypes[i].name + '</li>' +
+      '<li>' + 'Name: ' +matchedTypes[i].type + '</li>' +
     '</ul>'
+  }
 }
